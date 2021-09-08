@@ -2,15 +2,16 @@ import React from "react";
 import ModalDropdown from "react-native-modal-dropdown";
 import { View, StyleSheet, Text } from "react-native";
 import MyComponent from "./src/ReactNativePaper/MyComponent";
-import { countryList } from "./src/constantList";
+import { countryList, townList } from "./src/constantList";
 import { Provider } from "react-native-paper";
 
 export default function App() {
   return (
-    <Provider>
+    <View style={styles.inputForSelection}>
       {/* <ModalDropdown options={['option 1', 'option 2']}/> */}
       <MyComponent items={countryList} placeholder="Укажите вашу страну" />
-    </Provider>
+      <MyComponent items={townList} placeholder="Укажите ваш город" />
+    </View>
   );
 }
 
