@@ -2,8 +2,9 @@ import React from "react";
 import ModalDropdown from "react-native-modal-dropdown";
 import { View, StyleSheet, Text } from "react-native";
 import MyComponent from "./src/ReactNativePaper/MyComponent";
-import { countryList, townList } from "./src/constantList";
+import { countryList, townList } from "./constants/constantList";
 import { Provider } from "react-native-paper";
+import UpdateModal from "./src/UpdateModal";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       {/* <ModalDropdown options={['option 1', 'option 2']}/> */}
       <MyComponent items={countryList} placeholder="Укажите вашу страну" />
       <MyComponent items={townList} placeholder="Укажите ваш город" />
+      <UpdateModal />
     </View>
   );
 }
