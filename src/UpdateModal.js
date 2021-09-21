@@ -1,15 +1,15 @@
 // modules
 import React from "react";
 import { useState } from "react";
-import {Text, StyleSheet} from 'react-native'
+import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { Overlay } from "react-native-elements";// вместо import Modal from 'react-native-modal';
 import {
   Portal,
-  Button,
   Provider,
 } from "react-native-paper";
 // global imports
 import {MAIN_RED, FADED_RED, GREY} from "./../constants/colors";
+import SvgUpdateModal from "./icons/update"
 
 const UpdateModal = () => {
     const [visible, setVisible] = useState(true);
@@ -25,6 +25,9 @@ const UpdateModal = () => {
         isVisible={visible}
         onBackdropPress={hideModal}
       >
+        <TouchableOpacity onPress={hideModal}>
+          <SvgUpdateModal/>
+        </TouchableOpacity>
         <Text>Hi</Text>
       </Overlay>
     </Portal>
