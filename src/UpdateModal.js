@@ -1,15 +1,19 @@
 // modules
+import { red } from "@material-ui/core/colors";
 import React from "react";
 import { useState } from "react";
-import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
 import { Overlay } from "react-native-elements";// вместо import Modal from 'react-native-modal';
 import {
   Portal,
   Provider,
+  TouchableRipple, //что-то вроде TouchableOpacity, только не по контуру svg внутри, и с анимацией клика https://callstack.github.io/react-native-paper/touchable-ripple.html#style
+  Button,
 } from "react-native-paper";
 // global imports
-import {MAIN_RED, FADED_RED, GREY} from "./../constants/colors";
-import SvgUpdateModal from "./icons/update"
+import {MAIN_RED, FADED_RED, GREY, WHITE} from "./../constants/colors";
+import SvgBackCross from "./icons/backCross"
+import SvgUpdatePills from "./icons/updatePills"
 
 const UpdateModal = () => {
     const [visible, setVisible] = useState(true);
@@ -24,11 +28,16 @@ const UpdateModal = () => {
       <Overlay
         isVisible={visible}
         onBackdropPress={hideModal}
+        overlayStyle= {styles.overlay}
       >
-        <TouchableOpacity onPress={hideModal}>
-          <SvgUpdateModal/>
-        </TouchableOpacity>
-        <Text>Hi</Text>
+        <TouchableRipple onPress={hideModal} style = {styles.btBack} rippleColor={GREY}>
+          <SvgBackCross/>
+        </TouchableRipple>
+        <SvgUpdatePills style={styles.svgPills}/>
+        <Text style = {styles.text}>Вышла новая версия приложения. Желаете обновить?</Text>
+        <Button style={styles.btUpdate} labelStyle={{color: WHITE}}>
+          Обновить!
+        </Button>
       </Overlay>
     </Portal>
   </Provider>
@@ -38,23 +47,34 @@ const UpdateModal = () => {
 export default UpdateModal;
 
 const styles = StyleSheet.create({
-  value: {
-    fontFamily: "Helvetica_Neue",
-    fontSize: 50,
-    fontWeight: "400",
-    textAlign: "center",
+  overlay: {
+    borderRadius: 10,
   },
-  button: {
-    paddingVertical: Platform.OS === "ios" ? 5 : 10,
-    borderRadius: 25,
-    fontFamily: "Helvetica_Neue",
+  btBack:{
+    width: 25,
+    height: 25,
+    alignSelf: "flex-end",
+    marginTop: 5,
+    marginEnd: 5,
+  },
+  svgPills: {
+    alignSelf: "center",
+  },
+  text: {
+    width: Dimensions.get("window").width - 150,
     fontSize: 18,
-    fontWeight: "400",
-    textAlign: "left",
-    alignSelf: "flex-start",
-    letterSpacing: 0.2,
-    paddingStart: 10,
+    lineHeight: 21,
+    textAlign: "center",
+    marginTop: 25,
   },
+  btUpdate:{
+    backgroundColor: MAIN_RED,
+    borderRadius: 40,
+    width: Dimensions.get("window").width - 180,
+    alignSelf: "center",
+    marginTop: 25,
+    marginBottom: 25,
+  }
 });
 
 
