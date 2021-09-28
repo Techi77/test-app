@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Image, Dimensions, Text } from "react-native";
+import { View, StyleSheet, Image, Dimensions } from "react-native";
 import { Appbar } from 'react-native-paper';
 import { copilot, walkthroughable, CopilotStep } from "react-native-copilot";
-import PropTypes from "prop-types";
 
 import MyComponent from "./src/ReactNativePaper/MyComponent";
 import { countryList, townList } from "./constants/constantList";
 import UpdateModal from "./src/UpdateModal";
-import { Switch } from "react-native";
+import { TooltipComponent } from "./src/tutorial/TooltipComponent";
 
 const App = (props) => {
   const openModal = false
@@ -30,7 +29,7 @@ const App = (props) => {
         <Appbar.Action icon="information-outline" onPress={() => props.start()} />
       </Appbar.Header>
       <CopilotStep
-        text="This is the heading with some style"
+        text="Здесь вы можете найти алгоритмы лечения, медицинские калькуляторы и расчёт дозировок."
         order={1}
         name="firstUniqueKey">
         <WalkthroughableView style={styles.title}>
@@ -39,19 +38,16 @@ const App = (props) => {
       </CopilotStep>
       <CopilotStep
         active={nextStepActive}
-        text="This is the heading with some style"
+        text="А тут - регион"
         order={2}
         name="secondUniqueKey">
         <WalkthroughableView style={styles.title}>
           <MyComponent items={townList} placeholder="Укажите ваш город" />
         </WalkthroughableView>
       </CopilotStep>
-      <Switch
-        onValueChange={(nextStepActive) => setNextStepActive(nextStepActive)}
-        value={nextStepActive} />
       <CopilotStep
         active={nextStepActive}
-        text="This is the heading with some image"
+        text="Милая картинка пиксельного котика"
         order={3}
         name="thirdUniqueKey">
         <WalkthroughableImage
@@ -68,7 +64,8 @@ const App = (props) => {
 }
 export default copilot({
   overlay: "svg", // or 'view'
-  animated: true // or false
+  animated: true, // or false
+  tooltipComponent: TooltipComponent,
 })(App);
 
 const styles = StyleSheet.create({
@@ -89,3 +86,5 @@ const styles = StyleSheet.create({
     height: 50,
   }
 });
+
+ 

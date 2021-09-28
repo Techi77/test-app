@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    paddingVertical: Platform.OS === "ios" ? 5 : 10,
+    paddingVertical: 10,
     borderRadius: 25,
     fontSize: 18,
     fontWeight: "400",
