@@ -1,6 +1,8 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Dimensions, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-paper';
+
+import { WHITE, DARK_GREY, BLUE, GREEN } from "../../constants/colors";
 
 
 export const  TooltipComponent  =  ( { 
@@ -18,25 +20,25 @@ export const  TooltipComponent  =  ( {
       <View style={[styles.bottomBar]}>
         {
           isFirstStep ?
-            <Button onPress={handleStop}>
-              Я всё знаю
-            </Button>
+            <TouchableOpacity onPress={handleStop}>
+                <Text style={styles.buttonText}>{`Пропустить ${`\n`}обучение`}</Text>
+            </TouchableOpacity>
             : null
         }
         {
           !isFirstStep ?
-            <Button onPress={handlePrev}>
-              Назад
+            <Button onPress={handlePrev} color = {BLUE}>
+              НАЗАД
             </Button>
             : null
         }
         {
           !isLastStep ?
-            <Button onPress={handleNext}>
-              Далее
+            <Button onPress={handleNext} color = {BLUE}>
+              ДАЛЕЕ
             </Button> :
-            <Button onPress={handleStop}>
-              Закончить обучение
+            <Button onPress={handleStop} color = {GREEN}>
+              ЗАКОНЧИТЬ
             </Button>
         }
       </View>
@@ -45,23 +47,22 @@ export const  TooltipComponent  =  ( {
   
 
   const styles = StyleSheet.create({
-    tooltip: {
-      position: 'absolute',
-      paddingTop: 15,
-      paddingHorizontal: 15,
-      backgroundColor: '#fff',
-      borderRadius: 3,
-      overflow: 'hidden',
-    },
     tooltipText: {
-  
+        maxWidth: Dimensions.get("screen").width - 170,
+        fontSize: 15,
     },
     tooltipContainer: {
       flex: 1,
+      backgroundColor: WHITE,
     },
     bottomBar: {
-      marginTop: 10,
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
+      flexDirection: "row",
+      paddingVertical: 15,
+      backgroundColor: WHITE,
+      marginTop: 5,
     },
+    buttonText: {
+        color: DARK_GREY,
+        fontSize: 15,
+    }
   });
