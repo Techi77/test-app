@@ -12,44 +12,31 @@ import { TutorialStep } from "./src/tutorial/TutorialStep";
 const App = (props) => {
   const openModal = false
   const WalkthroughableView = walkthroughable(View)
-  
+
   return (
     <View style={styles.inputForSelection}>
+
       <Appbar.Header style={styles.bottom}>
-        <TutorialStep 
-      order = {4}
-      insideBlock = {<Appbar.Content title="Тестовое приложение" />}
-      />
+        <TutorialStep
+          order={4}
+          insideBlock={<Appbar.Content title="Тестовое приложение" />}/>
         <Appbar.Action icon="information-outline" onPress={() => props.start()} />
       </Appbar.Header>
-      
-      <CopilotStep
-        text="Здесь вы можете найти алгоритмы лечения, медицинские калькуляторы и расчёт дозировок."
-        order={1}
-        name="firstUniqueKey">
-        <WalkthroughableView style={styles.title}>
-          <MyComponent items={countryList} placeholder="Укажите вашу страну" />
-        </WalkthroughableView>
-      </CopilotStep>
-      <CopilotStep
-        text="А тут - регион"
-        order={2}
-        name="secondUniqueKey">
-        <WalkthroughableView style={styles.title}>
-          <MyComponent items={townList} placeholder="Укажите ваш город" />
-        </WalkthroughableView>
-      </CopilotStep>
-      <CopilotStep
-        text="Милая картинка пиксельного котика"
-        order={3}
-        name="thirdUniqueKey">
-        <WalkthroughableView style={styles.img}
-        >
-          <Image
+
+      <TutorialStep 
+      order = {1}
+      insideBlock = {<MyComponent items={countryList} placeholder="Укажите вашу страну" />}/>
+      <TutorialStep 
+      order = {2}
+      insideBlock = {<MyComponent items={townList} placeholder="Укажите ваш город" />}/>
+      <TutorialStep 
+      order = {3}
+      style={styles.img}
+      insideBlock = {
+        <Image
         style={styles.img}
-        source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb93UIrxAcBXkr9QX3GDUnGrtJUsR4KkXIDfOgbUmzfKLbe_j9mtcHU5Vors6XE5o9jYg&usqp=CAU" }}/>
-        </WalkthroughableView>
-      </CopilotStep>
+        source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb93UIrxAcBXkr9QX3GDUnGrtJUsR4KkXIDfOgbUmzfKLbe_j9mtcHU5Vors6XE5o9jYg&usqp=CAU" }} />
+      }/>
       {openModal ? <UpdateModal /> : openModal == false}
     </View>
   );
@@ -79,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
- 
+

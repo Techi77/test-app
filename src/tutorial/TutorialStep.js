@@ -4,7 +4,7 @@ import { walkthroughable, CopilotStep } from "react-native-copilot";
 
 import { tutorialConstant } from "../../constants/tutorialConstants";
 
-export const TutorialStep = ({ order, insideBlock }) => {
+export const TutorialStep = ({ order, insideBlock, style }) => {
     const WalkthroughableView = walkthroughable(View)
 
       return (
@@ -12,7 +12,7 @@ export const TutorialStep = ({ order, insideBlock }) => {
         text= {tutorialConstant[order].text}
         order={order}
         name={tutorialConstant[order].name}>
-        <WalkthroughableView style={styles.title}>
+        <WalkthroughableView style={style ? style : styles.title}>
           {insideBlock}
         </WalkthroughableView>
       </CopilotStep>
@@ -23,7 +23,7 @@ export const TutorialStep = ({ order, insideBlock }) => {
     title: {
       fontSize: 24,
       textAlign: "center",
-      height: 50,
+      minHeight: 50,
     }
   });
   
