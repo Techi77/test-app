@@ -1,8 +1,7 @@
 // modules
-import { red } from "@material-ui/core/colors";
 import React from "react";
 import { useState } from "react";
-import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
+import { Text, StyleSheet, Dimensions } from "react-native";
 import { Overlay } from "react-native-elements";// вместо import Modal from 'react-native-modal';
 import {
   Portal,
@@ -11,9 +10,9 @@ import {
   Button,
 } from "react-native-paper";
 // global imports
-import {MAIN_RED, FADED_RED, GREY, WHITE} from "./../constants/colors";
-import SvgBackCross from "./icons/backCross"
-import SvgUpdatePills from "./icons/updatePills"
+import {MAIN_RED, FADED_RED, GREY, WHITE} from "./../../constants/colors";
+import SvgBackCross from "./../icons/backCross"
+import SvgUpdatePills from "./../icons/updatePills"
 
 const UpdateModal = () => {
     const [visible, setVisible] = useState(true);
