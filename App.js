@@ -7,6 +7,7 @@ import MyComponent from "./src/ReactNativePaper/MyComponent";
 import { countryList, townList } from "./constants/constantList";
 import UpdateModal from "./src/modals/UpdateModal";
 import RateAppModal2 from "./src/modals/RateAppModal2";
+import RateAppModal from "./src/modals/RateAppModal";
 import { TooltipComponent } from "./src/tutorial/TooltipComponent";
 import { TutorialStep } from "./src/tutorial/TutorialStep";
 
@@ -42,7 +43,7 @@ const App = (props) => {
         source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb93UIrxAcBXkr9QX3GDUnGrtJUsR4KkXIDfOgbUmzfKLbe_j9mtcHU5Vors6XE5o9jYg&usqp=CAU" }} />
       }/>
       <Button onPress = {showUpdateModal}>SHOW UPDATE MODAL</Button>
-      {visible ? <RateAppModal2 /> : hideUpdateModal
+      {visible ? <RateAppModal /> : hideUpdateModal
       }
       {openModal ? <RateAppModal2 /> : openModal == false}
     </View>

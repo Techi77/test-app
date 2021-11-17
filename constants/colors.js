@@ -26,3 +26,5 @@ export const INK_BLUE = "#001896";
 export const BREEZE_APP_MAIN = "#5B9795";
 export const GREY_BLUE = "#8A96A5";
 export const DEEP_LIGHT_BLUE = "#0076ff";
+export const DARK_RED = "#6B141B"
+export const STAR_YELLOW = "#FCE053"
