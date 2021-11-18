@@ -26,21 +26,21 @@ export default class RateAppModal2 extends React.Component {
     super(props);
 
     this.state = {
-      visible: true,
-      bigText: -1,
+      visible: true, //видимость модалки
+      bigText: -1, //индекс в массиве какой сейчас большой текст (-1 это никакой)
       littleText: 0, //индекс в массиве какой сейчас маленький текст
       pickedStar: -1, // сколько звёзд поставили (-1 - пока не выбрали)
-      buttonText: "Оценить",
-      programmerSvgFromState: <SvgProgrammer4StarsComponent key="pr4" />,
+      buttonText: "Оценить", //текст кнопки внизу
+      programmerSvgFromState: <SvgProgrammer4StarsComponent key="pr4" />, //svg программиста
     };
   }
 
   render() {
-    const urlApp = Platform.OS == "ios" ? urlAppStoreKarat : urlGooglePlayKarat;
+    const urlApp = Platform.OS == "ios" ? urlAppStoreKarat : urlGooglePlayKarat; // ссылка на карат в маркетах
     const { visible, bigText, littleText, pickedStar, buttonText, programmerSvgFromState } = this.state
     const starsColors = [BLACK, DARK_RED, MAIN_RED, NECTARINE, STAR_YELLOW]
     const programmerArray = [<SvgProgrammer1StarsComponent key="pr1" />, <SvgProgrammer2StarsComponent key="pr2" />, <SvgProgrammer3StarsComponent key="pr3" />, <SvgProgrammer4StarsComponent key="pr4" />, <SvgProgrammer5StarsComponent key="pr4" />]
-    const goodRate = [3, 4]
+    const goodRate = [3, 4] // хорошие отметки, после которых нужно перекидывать в маркет (3=4звезды, 4=5звёзд)
     platformText = Platform.OS === `ios` ? "App Store" : "Google Play"
     const rateAppInStoreText = "Оцените нас \n в " + platformText
     const bigTextArray = ["Ужасно", "Плохо", "Нормально", "Хорошо", "Отлично"]
@@ -74,7 +74,7 @@ export default class RateAppModal2 extends React.Component {
             <View style={styles.starsContainer}>
               {
                 starsColors.map((color, index) => {
-                  if (index <= pickedStar) {
+                  if (index <= pickedStar) { // заполнять цветами звёздочки до выбранной
                     return (
                       <TouchableOpacity
                         key={color}
@@ -93,7 +93,7 @@ export default class RateAppModal2 extends React.Component {
                       </TouchableOpacity>
                     )
                   }
-                  else {
+                  else { // заполнять серым звёздочки после выбранной
                     return (
                       <TouchableOpacity
                         key={color}
