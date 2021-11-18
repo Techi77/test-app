@@ -1,6 +1,6 @@
 // modules
 import React from "react";
-import { Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity, View, Platform, Linking } from "react-native";
+import { Text, StyleSheet, Dimensions, TouchableOpacity, View, Platform, Linking } from "react-native";
 import { Overlay } from "react-native-elements";// вместо import Modal from 'react-native-modal';
 import {
   Portal,
@@ -31,7 +31,7 @@ export default class RateAppModal2 extends React.Component {
       littleText: 0, //индекс в массиве какой сейчас маленький текст
       pickedStar: -1, // сколько звёзд поставили (-1 - пока не выбрали)
       buttonText: "Оценить",
-      programmerSvgFromState: <SvgProgrammer4StarsComponent key ="pr4"/>,
+      programmerSvgFromState: <SvgProgrammer4StarsComponent key="pr4" />,
     };
   }
 
@@ -39,7 +39,7 @@ export default class RateAppModal2 extends React.Component {
     const urlApp = Platform.OS == "ios" ? urlAppStoreKarat : urlGooglePlayKarat;
     const { visible, bigText, littleText, pickedStar, buttonText, programmerSvgFromState } = this.state
     const starsColors = [BLACK, DARK_RED, MAIN_RED, NECTARINE, STAR_YELLOW]
-    const programmerArray = [<SvgProgrammer1StarsComponent key ="pr1"/>, <SvgProgrammer2StarsComponent key ="pr2"/>, <SvgProgrammer3StarsComponent key ="pr3"/>, <SvgProgrammer4StarsComponent key ="pr4"/>, <SvgProgrammer5StarsComponent key ="pr4"/>]
+    const programmerArray = [<SvgProgrammer1StarsComponent key="pr1" />, <SvgProgrammer2StarsComponent key="pr2" />, <SvgProgrammer3StarsComponent key="pr3" />, <SvgProgrammer4StarsComponent key="pr4" />, <SvgProgrammer5StarsComponent key="pr4" />]
     const goodRate = [3, 4]
     platformText = Platform.OS === `ios` ? "App Store" : "Google Play"
     const rateAppInStoreText = "Оцените нас \n в " + platformText
@@ -54,70 +54,72 @@ export default class RateAppModal2 extends React.Component {
             onBackdropPress={() => this.setState({ visible: "false" })}
             overlayStyle={styles.overlay}
           >
-              <TouchableRipple
-                onPress={() => this.setState({ visible: "false" })}
-                style={styles.btBack} 
-              >
-                <SvgBackCross style = {{alignSelf: "center"}}/>
-              </TouchableRipple>
-              <View style={styles.svgProgrammer}>
-                {programmerSvgFromState}
-              </View>
-              <Text style={bigText!=-1 ? styles.bigText : {display: "none"}} >
+            <TouchableRipple
+              onPress={() => this.setState({ visible: "false" })}
+              style={styles.btBack}
+            >
+              <SvgBackCross style={{ alignSelf: "center" }} />
+            </TouchableRipple>
+            <View style={styles.svgProgrammer}>
+              {programmerSvgFromState}
+            </View>
+            <View style={{height: 105, marginBottom: 25,}}>
+              <Text style={bigText != -1 ? styles.bigText : { display: "none" }} >
                 {bigTextArray[bigText]}
-                </Text>
+              </Text>
               <Text style={styles.littleText}>
                 {littleTextArray[littleText]}
-                </Text>
-              <View style={styles.starsContainer}>
-                {
-                  starsColors.map((color, index) => {
-                    if (index <= pickedStar) {
-                      return (
-                        <TouchableOpacity
-                        key = {color}
-                          style={styles.stars}
-                          onPress={() => {
-                            this.setState({
-                              pickedStar: index,
-                              buttonText: goodRate.includes(index) ? rateAppInStoreText : "Оценить",
-                              programmerSvgFromState: programmerArray[index],
-                              bigText: index,
-                              littleText: goodRate.includes(index) ? 1 : 2,
-                            })
+              </Text>
+            </View>
+            <View style={styles.starsContainer}>
+              {
+                starsColors.map((color, index) => {
+                  if (index <= pickedStar) {
+                    return (
+                      <TouchableOpacity
+                        key={color}
+                        style={styles.stars}
+                        onPress={() => {
+                          this.setState({
+                            pickedStar: index,
+                            buttonText: goodRate.includes(index) ? rateAppInStoreText : "Оценить",
+                            programmerSvgFromState: programmerArray[index],
+                            bigText: index,
+                            littleText: goodRate.includes(index) ? 1 : 2,
+                          })
 
-                          }}>
-                          <SvgStars color={color} key = {"star" + index}/>
-                        </TouchableOpacity>
-                      )
-                    }
-                    else {
-                      return (
-                        <TouchableOpacity
-                        key = {color}
-                          style={styles.stars}
-                          onPress={() =>
-                            this.setState({
-                              pickedStar: index,
-                              buttonText: goodRate.includes(index) ? rateAppInStoreText : "Оценить",
-                              programmerSvgFromState: programmerArray[index],
-                              bigText: index,
-                              littleText: goodRate.includes(index) ? 1 : 2,
-                            })}>
-                          <SvgStars color={GREY} key = {"star" + index.toString()}/>
-                        </TouchableOpacity>
-                      )
-                    }
-                  })
-                }
-              </View>
-              <TouchableRipple style={styles.btRate}
-                onPress={() => Linking.openURL(urlApp)}
-                underlayColor={FADED_RED}>
-                <Text style={styles.btRateText}>
-                  {buttonText}
-                </Text>
-              </TouchableRipple>
+                        }}>
+                        <SvgStars color={color} key={"star" + index} />
+                      </TouchableOpacity>
+                    )
+                  }
+                  else {
+                    return (
+                      <TouchableOpacity
+                        key={color}
+                        style={styles.stars}
+                        onPress={() =>
+                          this.setState({
+                            pickedStar: index,
+                            buttonText: goodRate.includes(index) ? rateAppInStoreText : "Оценить",
+                            programmerSvgFromState: programmerArray[index],
+                            bigText: index,
+                            littleText: goodRate.includes(index) ? 1 : 2,
+                          })}>
+                        <SvgStars color={GREY} key={"star" + index.toString()} />
+                      </TouchableOpacity>
+                    )
+                  }
+                })
+              }
+            </View>
+            <TouchableRipple style={styles.btRate}
+              onPress={() => Linking.openURL(urlApp)}
+              underlayColor={FADED_RED}>
+              <Text style={styles.btRateText}>
+                {buttonText}
+              </Text>
+            </TouchableRipple>
           </Overlay>
         </Portal>
       </Provider>
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     minWidth: 280,
     width: Dimensions.get("screen").width - 50,
     minHeight: 480,
-
+ 
   },
   btBack: {
     width: 25,
@@ -145,13 +147,12 @@ const styles = StyleSheet.create({
     height: 230,
     width: 230,
   },
-  bigText:{
+  bigText: {
     width: Dimensions.get("window").width - 150,
     fontSize: 36,
     lineHeight: 42,
     textAlign: "center",
     alignSelf: "center",
-    minHeight: 55
   },
   littleText: {
     width: Dimensions.get("window").width - 150,
@@ -159,8 +160,6 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     textAlign: "center",
     alignSelf: "center",
-    marginBottom: 25,
-    minHeight:55
   },
   starsContainer: {
     flexDirection: "row",

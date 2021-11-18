@@ -24,6 +24,7 @@
     "react-native-modal-dropdown": "^1.0.1",
     "react-native-paper": "*",
     "react-native-ratings": "^8.1.0",
+    "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "3.2.0",
     "react-native-svg": "12.1.1",
     "react-native-vector-icons": "^8.1.0",
