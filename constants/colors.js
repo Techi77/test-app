@@ -8,6 +8,7 @@ export const DARK_BLUE = "#2e5069";
 export const BLUE = "#2983C3";
 export const WHITE = "#fff";
 export const BLACK = "#000";
+export const MODAL_BACKGROUND_BLACK = "rgba(0,0,0,0.5)";
 export const LIGHT_PINK = "#fff3f4";
 export const LIGHT_BLUE = "#F3F6F9";
 export const FADED_RED = "#da2e29";
@@ -26,5 +27,8 @@ export const INK_BLUE = "#001896";
 export const BREEZE_APP_MAIN = "#5B9795";
 export const GREY_BLUE = "#8A96A5";
 export const DEEP_LIGHT_BLUE = "#0076ff";
-export const DARK_RED = "#6B141B"
-export const STAR_YELLOW = "#FCE053"
+export const TRANSPARENT = "transparent";
+export const DARK_RED = "#6B141B";
+export const STAR_YELLOW = "#FCE053";
+
+
